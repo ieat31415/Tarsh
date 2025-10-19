@@ -1,0 +1,59 @@
+<@ frets 
+ [[48 48] [57 54] [60 55] [63 56] [57 48] [81 66] [81 64] 
+ [64 48] [72 51] [80 55] [72 48] 
+ [95 60] [90 55] [81 48] [96 54] [96 51] [64 33] 
+ [96 48] [114 54] [120 55] [126 56] [114 48] [108 44] [81 32] 
+ [88 33] [96 34] [96 33] [120 40] 
+ [114 36] [108 33] [108 32] [96 27] [64 17] [128 33]]> 
+
+<@ fifths ;curated and limited to one octave
+ [[96 64] [114 72] [72 44] [108 64] [114 64] [94 64] [81 64] [120 60] [144 68] [144 66] [144 64] [171 72] [162 66] [162 64] [144 54] [96 34] [64 33] [96 32]
+[114 72] [72 44] [108 64] [114 64] [94 64] [81 64] [120 60] [144 68] [144 66] [144 64] [171 72] [162 66] [162 64] [144 54] [96 34] [64 33] [96 32]]>
+
+
+<@ sevenths 
+[[112 128] [133 144] [168 176] [126 128] [133 128] [189 176] [112 128] [28 24] [168 136] [112 88] [21 16] [133 96] [126 88] [189 128] [112 72] [224 136] [112 128] [14 8] [133 72] [168 88] [63 32] [133 64] [189 88] [112 128] [56 24] [112 128] [224 88] [21 8] [133 48] [252 88] [189 64] [224 72] [112 128] [112 128]]>
+
+ <@ nums
+ <# [list]
+ <? list
+    <tank <" <" list>> <nums <: list>>>
+    list
+>
+>
+>
+
+;extract the denomerators from a list of intervals into a new list
+;recursively pop the second element in the pairs
+ <@ denoms
+ <# [idx]
+ <? idx <tank <" <: <" idx>>> <denoms <: idx>>> idx>>
+ >
+
+
+<@ numerators <nums frets>>
+
+<@ denominators <denoms frets>>
+
+<@ numerators_fifths <nums fifths>>
+
+<@ denominators_fifths <denoms fifths>>
+
+;<@ numerators_sevenths <nums sevenths>>
+
+;<@ denominators_sevenths <denoms sevenths>>
+
+;try adding something with sample and hold based on certain frets to hold the chord
+
+{ 
+  (left
+  (right
+  (arab
+  (horn (ladder (finger) numerators) (ladder (finger) denominators) 96)
+  (hornb (ladder (finger) numerators_fifths) (ladder (finger) denominators_fifths) 32)
+  ;(hornc (ladder (finger) numerators_sevenths) (ladder (finger) denominators_sevenths) 32)
+  )
+  )
+  )
+  (srate 16)
+}

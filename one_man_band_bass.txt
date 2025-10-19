@@ -1,0 +1,16 @@
+{
+	(left
+	(right
+	
+	
+	(horne 24 96 (slewe (togglee (square (heart) 8) (top)) 126 126)) ;root
+	(slew (toggle (steel)) 126 126 (horn 32 96 (top))) ;fourth
+	(slewb (toggleb (steelb)) 126 126 (hornb 36 96 (top))) ;fifth
+	(slewc (togglec (steelc)) 126 126 (hornc 48 96 (top))) ; octave
+	(slewd (toggled (steeld)) 126 126 (hornd 44 66 (top))) ; oct fifth
+	
+	
+	)
+	)
+
+}

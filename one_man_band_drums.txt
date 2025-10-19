@@ -1,0 +1,26 @@
+{ ;drum kit
+	(left
+
+;;;;;;;;;;
+	;Bass Drum (about 96BPM)
+	(mount 16 1)
+	(wave (pulse (square (arab (mount)) 0) 120) 1 4 64)
+
+;;;;;;;;;;;;
+ 	;Snare: sine wave for the body and attack mixed with noise
+ 	
+ 	(mountb 1 16)
+ 	(arab (swoopb (and (mount) (mountb)) 32 64)) ;set the pattern
+ 	(mul ;mix together:
+ 	(horn (add (swoopb) 16) 64  (swoopb)) ;sine body tone
+ 	(smoke 32 64 (swoopb)) ;noise
+ 	)
+
+;;;;;;;;;;;;;;
+	; HiHat
+
+	(arab (mountc 16 1))
+ 	(waveb (pulse (square (mountc) 0) 120) 2 120 (smoke (gear (pulse (square (arab (mountc)))) 3) 4))
+
+ 	) 
+}
