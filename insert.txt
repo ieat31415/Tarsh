@@ -1,0 +1,123 @@
+;insert function in various forms, including building sorted lists
+
+;helper function for insert function
+<@ insert_at_front
+<# [list val]
+    <@ oldlist list >
+    <@ list <tank val oldlist>>
+    list
+>
+>
+
+
+;inserts an item into a decending sorted list and preserves the sort
+;assumes val is a number and list is a tank of numbers
+<@ insert_descending
+<# [list val]
+<? val ;check if val is empty and return list if so
+    <? <" list> ; Check if it's empty
+        <? <= val <" list>> ; Check if first item is the same as the val
+            <@ list list> ; do nothing, list stays as-is
+            ; When there is a non-empty list
+            ; BASE CASE: new item is highest, insert at front
+            <? <' val <" list>> ; greater than check
+                ; New item is highest, insert at front
+                ; Insert new value at the beginning, and old at the end
+                <@ list <insert_at_front list val>>;
+
+                ; Else, New val less than old - goes at the end
+                <? <: list> ; check if end of list is empty
+                    ; First item is still largest - keep it and sort the read_list
+                    <@: list <insert_descending <: list> val>> ;update the list
+                    ; Else, there's only one item so far, insert at the end
+                    <@: list <tank val <>>>
+                >
+            >
+        >
+        ; Else, when it's an empty list, set this to the first value
+        <@" list val>
+    >
+    ;list
+    >
+    list ; Last statement is to return
+>
+>
+
+
+
+ ;loop the reoccuring condition idx times
+ ;could be modified to only keep numbers below 128 by calling lischeck instead
+  <@ insert_sorted_composites
+  <# [lis n]
+  <@ oldlist lis>
+  ;<@ lis <tank <lismul limit n 1> oldlist>>
+  <@ lis <insert_descending lis <lismul limit n 1>>>
+      <? <' <- n 1> 0>
+          <
+              <@ lis <insert_sorted_composites lis <- n 1>>>
+          >
+      >
+
+      lis ; return
+  >
+  >
+
+<@ arr []>
+<@ arr <insert_sorted_composites arr 123>>
+
+
+;modifying to filter out > 128 since 8 bit
+ <@ insert_sorted_composites
+ <# [lis n]
+ <@ oldlist lis>
+ ;<@ lis <tank <lischeck n> oldlist>>
+ <@ lis <insert_descending lis <lischeck n>>>
+     <? <' <- n 1> 0>
+         <
+             <@ lis <insert_sorted_composites lis <- n 1>>>
+         >
+     >
+
+     lis ; return
+ >
+ >
+
+
+ ;ASCENDING ORDER UNIQUE
+ ;inserts an item into a ASCENDING sorted list and preserves the sort
+ ;assumes val is a number and list is a tank of numbers
+ <@ insert_ascending
+ <# [list val]
+ <? val ;check if val is empty and return list if so
+     <? <" list> ; Check if it's empty
+         <? <= val <" list>> ; Check if first item is the same as the val
+             <@ list list> ; do nothing, list stays as-is
+             ; When there is a non-empty list
+             ; BASE CASE: new item is highest, insert at front
+             <? <' val <" list>> ; greater than check
+                 ; New item is highest, insert at front
+                 ; Insert new value at the beginning, and old at the end
+                 <@ list <insert_at_front list val>>;
+
+                 ; Else, New val less than old - goes at the end
+                 <? <: list> ; check if end of list is empty
+                     ; First item is still largest - keep it and sort the read_list
+                     <@: list <insert_ascending <: list> val>> ;update the list
+                     ; Else, there's only one item so far, insert at the end
+                     <@: list <tank val <>>>
+                 >
+             >
+         >
+         ; Else, when it's an empty list, set this to the first value
+         <@" list val>
+     >
+     ;list
+     >
+     list ; Last statement is to return
+ >
+ >
+
+
+;TEST CASES
+<@ arr <insert arr 4>>
+<@ arr <insert arr 7>>

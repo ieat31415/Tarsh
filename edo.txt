@@ -1,0 +1,40 @@
+;generates arpeggios based on the number of steps in the first parameter and the octave in the second
+;the steps are spaced by sevenths
+;using prim_euro it recursively applies as such: edo(b c d) = d * 2^(b/c). "b" will countdown each cycle until zero.
+;produces a list of the form edo(5 7 d)=[(d * 2^(5/7)), (d * 2^(4/7)), (d * 2^(3/7)), (d * 2^(2/7)), (d * 2^(1/7))]
+;dividing the exponent of two by seven approximates the seventh harmonic
+;there is tone equivalence at every multiple by 2 of a generated value.
+;like an EDO generator.
+;the sequence that it creates is non-linear due to the rounding to the nearest int
+;try interval_denom as 31 and interval_num as 17.
+<
+@ edo
+<# [interval_num interval_denom scaler]
+<? interval_num
+<tank
+<` 2 interval_num interval_denom scaler>
+<edo <- interval_num 1> interval_denom scaler>
+>
+interval_num
+>
+>
+>
+
+
+
+{
+(srate 20)
+(left
+(arab
+(saw
+(ladder
+(mount 128 127)
+<edo 24 31 31>
+64
+)
+)
+)
+)
+}
+
+<$ <edo 24 31 31>>

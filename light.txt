@@ -1,0 +1,13 @@
+ ;maps each light to a button
+
+
+ {(left 
+ (lights (square (toggle (minor)) 0 1))
+ (lights (square (toggleb (major)) 0 2)) 
+ (lights (square (togglec (minorb)) 0 4)) 
+ (lights (square (toggled (majorb)) 0 8)) 
+ (lights (square (togglee (minorc)) 0 16)) 
+ (lights (square (togglef (majorc)) 0 32)) 
+ (lights (square (toggleg (minord)) 0 64)) 
+ (lights (square (toggleh (majord)) 0 128)) 
+)}

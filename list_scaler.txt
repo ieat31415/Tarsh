@@ -1,0 +1,32 @@
+;list scaler
+
+
+;wrapper function
+<@ list_scaler
+<# [list n]
+    <rescursive_list_scaler list n []>
+>
+>
+
+
+<@ rescursive_list_scaler
+<# [list n output_list]
+
+    ; If the rest of the list is not empty, keep going through list, else stop
+    <? <: list>
+        ; Call this function recursively with the remaining list
+        <<@ output_list <rescursive_list_scaler <: list> n output_list>>>
+    >
+
+    ; Get first item from the list
+    ; <? list ; deal with this
+    <@ scaler_result <* <" list> n>>
+
+    ;Set result to end of new list (special case when it's first)
+    <? <" output_list>
+        <@ output_list <tank scaler_result output_list>>
+        <@ output_list <tank scaler_result <>>>
+    >
+    output_list ;return
+>
+>

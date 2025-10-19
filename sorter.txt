@@ -1,0 +1,21 @@
+;a sorted insert. give a list "sorted" and an integer value "val" to be inserted in the right order. if "sorted" is a sorted list, then it will keep it sorted.
+;this could be used to build a sorted list by starting with one value and an empty list, the the values could be fed in one at a time to build up the sorted list.
+<@ sorted_insert
+<# [sorted val]
+    <? <" sorted>
+        <? <: sorted>
+            <? <' <" val> <" <" <: sorted>>>>
+                <sorter <: sorted> val>
+                <@: sorted <tank val <: sorted>> >
+            >
+            <@: sorted <tank val <>>>
+        >
+        <@" sorted val>
+    >
+    return sorted
+>
+>
+
+<@sorted []>
+
+<$ <sorted_insert sorted [[3]]>>

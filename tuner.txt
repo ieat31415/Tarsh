@@ -1,0 +1,8 @@
+{
+(srate 32)
+(left
+(right
+(horn 64 64 64)
+)
+)
+}

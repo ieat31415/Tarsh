@@ -1,0 +1,68 @@
+;Binary expansion
+
+;def fun given decimal return binary expansion in list (tank)
+
+;wrapper function
+<@ binary
+<# [n]
+    <binary_recursive [] n 1>
+>
+>
+
+;binary decomposition algorithm
+<@ binary_recursive
+<# [list n first_time]
+
+;if no second item and no first item
+    ;take current val and modulo 2
+    ;if 1, then insert 1 into list
+    <? <= first_time 1>
+        <@" list <% n 2>> ; Special way for first time
+        <@ list <tank <% n 2> list>> ; normal way
+    >
+
+    <@ next_place </ n 2>> ;Divide by 2 for next place value in binary
+
+    ;if divide by 2 = 0, do nothing and return bin
+    <? <= next_place 0>
+        <> ; do nothing
+        <@ list <binary_recursive list next_place 0>> ;else continue to the next place (could use bit shift left as well)
+    >
+
+    list
+    ;<$ list>
+>
+>
+
+
+;Binary expansion alt version where number of bits is specified as max_size, use 8 for a byte
+
+<@ binary_places
+<# [n max_size]
+    <binary_recursive_places [] n 0 max_size>
+>
+>
+
+<@ binary_recursive_places
+<# [list n counter max_size]
+
+;if no second item and no first item
+    ;take current val and modulo 2
+    ;if 1, then insert 1 into list
+    <? <= counter 0>
+        <@" list <% n 2>> ; Special way for first time
+        <@ list <tank <% n 2> list>> ; normal way
+    >
+
+    <@ next_place </ n 2>> ;Divide by 2 for next place value in binary
+
+    ;if divide by 2 = 0, do nothing and return bin
+    <? <' counter <- max_size 2>>
+        <> ; do nothing
+        <@ list <binary_recursive_places list next_place <+ counter 1> max_size>> ;else continue to the next place (could use bit shift left as well)
+    >
+
+    list
+    ;<$ list>
+>
+>
