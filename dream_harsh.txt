@@ -1,0 +1,56 @@
+{
+;Dream Harsh is inspired by the Dream House, a sound and light environment by La Monte Young and Marian Zazeela
+
+	(left
+	;in order of the frets
+	;has to be 128 denominator instead of 256 in order to have the same harmonic ratios
+	;top knob for lower tones, bottom knob for upper half
+	;needs to be in arab for high primes
+
+	(slewe (return (togglee (brass)) (toggleh (tar))) 1 1 (arab (horne 112 64 (top))))
+	(slewf (return (togglef (brassb)) (toggleh (tar))) 1 1 (arab (hornf 113 64 (top))))
+	(slew (return (toggle (steel)) (toggleh (tar))) 1 1 (arab (horn 114 64 (top))))
+	(slewb (return (toggleb (steelb)) (toggleh (tar))) 1 1 (arab (hornb 115 64 (top))))
+	(slewg (return (toggleg (brassc)) (toggleh (tar))) 1 1 (arab (horng 116 64 (bot))))
+	(slewd (return (toggled (brassd)) (toggleh (tar))) 1 1 (arab (hornd 117 64 (bot))))
+	(slewc (return (togglec (steelc)) (toggleh (tar))) 1 1 (arab (hornc 118 64 (bot))))
+	(jump (square (heart) 32 1))
+	)
+}
+
+{
+	(left
+	(slewe (return (togglee (brass)) (toggleh (tar))) 1 1 (arab (horne 227 128 (top))))
+	(slewf (return (togglef (brassb)) (toggleh (tar))) 1 1 (arab (hornf 229 128 (top))))
+	(slew (return (toggle (steel)) (toggleh (tar))) 1 1 (arab (horn 230 128 (top))))
+	(slewb (return (toggleb (steelb)) (toggleh (tar))) 1 1 (arab (hornb 239 128 (top))))
+	(slewg (return (toggleg (brassc)) (toggleh (tar))) 1 1 (arab (horng 241 128 (bot))))
+	(slewd (return (toggled (brassd)) (toggleh (tar))) 1 1 (arab (hornd 242 128 (bot))))
+	(slewc (return (togglec (steelc)) (toggleh (tar))) 1 1 (arab (hornc 252 128 (bot))))
+	(jump (square (heart) 32 1))
+	)
+}
+
+{
+;BASS version
+
+	(left
+	(slewe (return (togglee (brass)) (toggleh (tar))) 1 1 (arab (horne 112 (short 255 255) (top))))
+	(slewf (return (togglef (brassb)) (toggleh (tar))) 1 1 (arab (hornf 113 (short 255 255) (top))))
+	(slew (return (toggle (steel)) (toggleh (tar))) 1 1 (arab (horn 114 (short 255 255) (top))))
+	(slewb (return (toggleb (steelb)) (toggleh (tar))) 1 1 (arab (hornb 115 (short 255 255) (top))))
+	(slewg (return (toggleg (brassc)) (toggleh (tar))) 1 1 (arab (horng 116 (short 255 255) (bot))))
+	(slewd (return (toggled (brassd)) (toggleh (tar))) 1 1 (arab (hornd 117 (short 255 255) (bot))))
+	(slewc (return (togglec (steelc)) (toggleh (tar))) 1 1 (arab (hornc 118 (short 255 255) (bot))))
+	(jump (square (heart) 32 1))
+	)
+}
+
+
+ ;numerators used in intervals:
+ ;227, 229, 230, 239, 241, 242, 252
+ ;112, 113, 114, 115, 116, 117, 118 (uses the primes in the octave down of the lower interval)
+
+
+
+
